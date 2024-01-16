@@ -35,5 +35,19 @@ router.get("/:id", (req, res, next) => {
         next(error(404, "Comment not found"));
     }
 });
+/*
+router.patch('/:id', (req, res) => {
+    const id = req.params.id;
+    const newBody = req.body.newBody;
+    // Add logic to find the comment by ID and update its body
+    // Respond with success or error message
+});
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    // Add logic to find the comment by ID and delete it
+    // Respond with success or error message
+});
+*/
 
 module.exports = router;

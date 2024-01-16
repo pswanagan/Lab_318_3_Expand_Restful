@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const users = require("./routes/users");
 const posts = require("./routes/posts");
-
+const comments = require("./routes/comments.js")
 const error = require("./utilities/error");
 
 const app = express();
@@ -27,7 +27,7 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
   }
   next();
 });
-
+/*
 // Valid API Keys.
 apiKeys = ["perscholas", "ps-example", "hJAsknw-L198sAJD-l3kasx"];
 
@@ -49,11 +49,11 @@ app.use("/api", function (req, res, next) {
   req.key = key;
   next();
 });
-
+*/
 // Use our Routes
 app.use("/api/users", users);
 app.use("/api/posts", posts);
-
+app.use('/api/comments', comments)
 // Adding some HATEOAS links.
 app.get("/", (req, res) => {
   res.json({
