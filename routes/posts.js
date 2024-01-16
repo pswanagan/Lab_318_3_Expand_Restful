@@ -77,4 +77,22 @@ router
     else next();
   });
 
+  // New route to get all posts by a specific user using route parameter
+router.get("/users/:id/posts", (req, res, next) => {
+  const userPosts = posts.filter(post => post.userId == req.params.id);
+  if (userPosts.length > 0) res.json(userPosts);
+  else next(error(404, "No posts found for the specified user"));
+});
+
+// Modified existing route to handle 'userId' query parameter
+router.get("/", (req, res) => {
+  if (req.query.userId) {
+      const userPosts = posts.filter(post => post.userId == req.query.userId);
+      if (userPosts.length > 0) res.json(userPosts);
+      else res.json({ message: "No posts found for the specified user" });
+  } else {
+      res.json(posts);
+  }
+});
+
 module.exports = router;
